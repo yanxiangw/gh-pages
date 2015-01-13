@@ -193,8 +193,7 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         ignorePath: /^\/|\.\.\//,
-        src: ['<%= config.app %>/index.html'],
-        exclude: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js']
+        src: ['<%= config.app %>/index.html']
       },
       sass: {
         src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
@@ -328,12 +327,6 @@ module.exports = function (grunt) {
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
           dest: '<%= config.dist %>/.htaccess'
-        }, {
-          expand: true,
-          dot: true,
-          cwd: '.',
-          src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-          dest: '<%= config.dist %>'
         }]
       },
       styles: {
@@ -342,23 +335,6 @@ module.exports = function (grunt) {
         cwd: '<%= config.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      }
-    },
-
-    // Generates a custom Modernizr build that includes only the tests you
-    // reference in your app
-    modernizr: {
-      dist: {
-        devFile: 'bower_components/modernizr/modernizr.js',
-        outputFile: '<%= config.dist %>/scripts/vendor/modernizr.js',
-        files: {
-          src: [
-            '<%= config.dist %>/scripts/{,*/}*.js',
-            '<%= config.dist %>/styles/{,*/}*.css',
-            '!<%= config.dist %>/scripts/vendor/*'
-          ]
-        },
-        uglify: true
       }
     },
 
@@ -429,7 +405,6 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'copy:dist',
-    'modernizr',
     'rev',
     'usemin',
     'htmlmin'
