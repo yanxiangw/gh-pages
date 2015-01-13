@@ -79,7 +79,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          middleware: function(connect) {
+          middleware: function (connect) {
             return [
               connect.static('.tmp'),
               connect().use('/bower_components', connect.static('./bower_components')),
@@ -92,7 +92,7 @@ module.exports = function (grunt) {
         options: {
           open: false,
           port: 9001,
-          middleware: function(connect) {
+          middleware: function (connect) {
             return [
               connect.static('.tmp'),
               connect.static('test'),
@@ -338,6 +338,20 @@ module.exports = function (grunt) {
       }
     },
 
+    buildcontrol: {
+      options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      pages: {
+        options: {
+          remote: 'git@github.com:yanxiangw/yanxiangw.github.io.git',
+          branch: 'master'
+        }
+      }
+    },
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [
