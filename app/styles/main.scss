@@ -9,7 +9,7 @@ $profile-img-size: 150px;
 $profile-border-width: 2px;
 $golden-ratio: 0.618;
 $font-size: 2.8rem;
-$small-font-size: $font-size * $golden-ratio;
+$small-font-size: $font-size * $golden-ratio * 0.8;
 $profile-img-small-size: $profile-img-size * $golden-ratio;
 $profile-clip-size: 23px;
 $header-height: $profile-img-size - $profile-clip-size * 2;
