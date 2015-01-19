@@ -3,14 +3,16 @@
 
 // sizes
 $max-width: 1170px;
-$mobile-width: 560px;
+$mobile-width: 590px;
 $default-padding: 10px;
 $profile-img-size: 150px;
+$social-icon-size: 100px;
 $profile-border-width: 2px;
 $golden-ratio: 0.618;
 $font-size: 2.8rem;
 $small-font-size: $font-size * $golden-ratio * 0.8;
 $profile-img-small-size: $profile-img-size * $golden-ratio;
+$social-icon-small-size: $social-icon-size * $golden-ratio;
 $profile-clip-size: 23px;
 $header-height: $profile-img-size - $profile-clip-size * 2;
 $header-small-height: $profile-img-small-size - $profile-clip-size * 2 * $golden-ratio;
@@ -37,34 +39,34 @@ body {
 }
 header {
   position: relative;
-  height: $header-height;
+  height: $header-small-height;
   background-color: $solidate-color;
   color: #eee;
   .profile-img {
     position: absolute;
     top: -$profile-clip-size;
-    left: 0;
+    width: $profile-img-small-size;
+    height: $profile-img-small-size;
+    left: -$profile-clip-size;
     border: $profile-border-width solid $profile-border-color;
     display: inline-block;
-    width: $profile-img-size;
-    height: $profile-img-size;
     border-radius: 50%;
     overflow: hidden;
     img {
-      width: $profile-img-size;
-      height: $profile-img-size;
+      width: $profile-img-small-size;
+      height: $profile-img-small-size;
       max-width: 100%;
     }
   }
-  @media (max-width: $mobile-width) {
-    height: $header-small-height;
+  @media (min-width: $mobile-width) {
+    height: $header-height;
     .profile-img {
-      width: $profile-img-small-size;
-      height: $profile-img-small-size;
-      left: -$profile-clip-size;
+      width: $profile-img-size;
+      height: $profile-img-size;
+      left: $profile-clip-size;
       img {
-        width: $profile-img-small-size;
-        height: $profile-img-small-size;
+        width: $profile-img-size;
+        height: $profile-img-size;
       }
     }
   }
@@ -72,22 +74,22 @@ header {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
-    font-size: $font-size;
-    padding-left: $profile-img-size + $default-padding;
-    @media (max-width: $mobile-width) {
-      padding-left: $profile-img-small-size - $profile-clip-size + $default-padding;
-      font-size: $small-font-size;
+    font-size: $small-font-size;
+    padding-left: $profile-img-small-size - $profile-clip-size + $default-padding;
+    @media (min-width: $mobile-width) {
+      font-size: $font-size;
+      padding-left: $profile-img-size + 2 * $default-padding + $profile-clip-size;
     }
   }
 }
 .main_container {
-  margin-top: $profile-clip-size;
+  margin-top: $profile-clip-size * $golden-ratio;
   .msg_box {
     margin: 0 auto;
     width: 80%;
   }
-  @media (max-width: $mobile-width) {
-    margin-top: $profile-clip-size * $golden-ratio;
+  @media (min-width: $mobile-width) {
+    margin-top: $profile-clip-size;
   }
 }
 footer {
@@ -102,11 +104,11 @@ footer {
       svg {
         margin: 0 auto;
         display: block;
-        width: 100px;
-        height: 100px;
-        @media (max-width: 800px) {
-          width: 75px;
-          height: 75px;
+        width: $social-icon-small-size;
+        height: $social-icon-small-size;
+        @media (min-width: $mobile-width) {
+          width: $social-icon-size;
+          height: $social-icon-size;
         }
       }
       &:hover {
